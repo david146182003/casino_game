@@ -48,26 +48,30 @@ buttonGo.addEventListener('click', (e)=>{
         newCard.style.width="100px"
         newCard.textContent ="New card"
         let cardArr =[];
+        let sumEl = 0;
         startGame.addEventListener('click', (e)=>{
+            cardArr=[];
+            sumEl = 0;
             e.preventDefault();
             let randomCard = Math.floor(Math.random()*10+1)
             let randomCard2 = Math.floor(Math.random()*10+1)
             cardArr.push(randomCard, randomCard2)
+            sumEl += (cardArr[0] + cardArr[1])
             cards.textContent = `cards: ${cardArr[0]}   ,   ${cardArr[1]}`
-            sum.textContent ="Sum:  " + (cardArr[0] + cardArr[1])
-            p1.textContent =`your sum is :  ${cardArr[0] + cardArr[1]}, do you want more card?`
-
-            newCard.addEventListener('click', (e)=>{
-                e.preventDefault();
-                let randomCard3 = Math.floor(Math.random()*10+1);
-                cardArr.push(randomCard3)
-                for(let i=0; i<cardArr.length;i++ ){
-                    cards.textContent = `cards: ${cardArr[0]}   ,   ${cardArr[1]}  , ${cardArr[2]}`
-                }
+            sum.textContent ="Sum:  " + sumEl
+            p1.textContent =`do you want more card?`
+})
+        newCard.addEventListener('click', (e)=>{
+            e.preventDefault();
+            let randomCard3 = Math.floor(Math.random()*10+1);
+            cardArr.push(randomCard3)
+            
+            cards.textContent = `cards: ${cardArr[0]}   ,   ${cardArr[1]}  , ${cardArr[2]}`
+            
             
         })
             
-        })
+        
         // newCard.addEventListener('click', (e)=>{
         //     e.preventDefault();
         //     let randomCard3 = Math.floor(Math.random()*10+1);
