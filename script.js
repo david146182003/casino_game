@@ -40,7 +40,7 @@ buttonGo.addEventListener('click', (e)=>{
         let sum = document.createElement('div')
         let startGame = document.createElement('button')
         let newCard = document.createElement('button')
-        //iterate ove the collection
+        //iterate over the collection
         let divCollection = window.document.getElementsByTagName('div')
         for(let div of divCollection){
             div.style.fontSize = "30px"
@@ -103,25 +103,15 @@ buttonGo.addEventListener('click', (e)=>{
             }else if(cardArr.length ===5){
                 cards.textContent = `cards: ${cardArr[0]}   ,   ${cardArr[1]}  , ${cardArr[2]} ,${cardArr[3]}, ${cardArr[4]}`
             }
-            
-            
         })
-       
-
     })
 })
-
-
 
  const handleUnder18 =(event)=>{
             event.preventDefault();
             alert('Sorry, you are not allowed to play')
 
         }
-const vaildName = ()=>{
-    
-}
-
 
 const createBtn =()=>{
     let btn = document.createElement('button')
