@@ -46,7 +46,9 @@ buttonGo.addEventListener('click', (e)=>{
         div.appendChild(startGame)
         div.appendChild(newCard)
         p1.style.textAlign ="center"
-        p1.textContent = 'Press Button to Start'
+        div.firstChild.textContent = 'Press Button to Start'
+        // console.log(div.firstChild)
+        // console.log(div.firstElementChild)
         cards.style.textAlign ="center"
         cards.textContent= "cards: "
         sum.style.textAlign ="center"
