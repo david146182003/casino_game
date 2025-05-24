@@ -1,3 +1,4 @@
+
 const body = document.querySelector('body')
 const div = document.querySelector('.container')
 const form = document.getElementById('form')
@@ -65,8 +66,22 @@ buttonGo.addEventListener('click', (e)=>{
             e.preventDefault();
             let randomCard3 = Math.floor(Math.random()*10+1);
             cardArr.push(randomCard3)
-            
-            cards.textContent = `cards: ${cardArr[0]}   ,   ${cardArr[1]}  , ${cardArr[2]}`
+            sumEl += randomCard3
+            sum.textContent ="Sum:  " + sumEl
+            if(sumEl ===21){
+                p1.innerHTML = `<h1>BlackJack!! 21</h1> <p>Press start a new game`
+            }else if(sumEl >21){
+                p1.innerHTML =`<h2>Too many! You lose.</h2>  <p>Press start a new game</p>`
+                
+            }
+            let lastCard =cardArr[cardArr.length-1]
+            if(cardArr.length ===3){
+                cards.textContent = `cards: ${cardArr[0]}   ,   ${cardArr[1]}  , ${cardArr[2]}`
+            }else if(cardArr.length ===4){
+                cards.textContent = `cards: ${cardArr[0]}   ,   ${cardArr[1]}  , ${cardArr[2]} ,${cardArr[3]}`
+            }else if(cardArr.length ===5){
+                cards.textContent = `cards: ${cardArr[0]}   ,   ${cardArr[1]}  , ${cardArr[2]} ,${cardArr[3]}, ${cardArr[4]}`
+            }
             
             
         })
