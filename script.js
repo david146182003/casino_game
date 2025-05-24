@@ -13,9 +13,14 @@ inputName.setAttribute('placeholder', 'Enter name')
 
 buttonGo.addEventListener('click', (e)=>{
     e.preventDefault()
-    let inputVal = inputName.value
-    if(inputVal ===''){
-        alert("must enter name")
+    let inputVal = inputName.value;
+    const nameRegex = /^[A-Za-z]+$/;
+    if(inputVal ==='' || !nameRegex.test(inputVal) ){
+        alert("Must enter name without number and space")
+        inputName.focus();
+        return false
+    }else if(inputVal.length<3){
+        alert("Your name must include more than 3 characters")
         inputName.focus();
         return false
     }
@@ -25,7 +30,9 @@ buttonGo.addEventListener('click', (e)=>{
     let under18 = createBtn()
     over18.textContent = "YES"
     under18.textContent = "NO"
-    over18.addEventListener('click', ()=>{
+    under18.addEventListener('click', handleUnder18)
+    over18.addEventListener('click', (e)=>{
+        e.preventDefault()
         h1.textContent = 'BlackJack Game'
         div.textContent =''
         let p1 =document.createElement('div') 
@@ -64,6 +71,7 @@ buttonGo.addEventListener('click', (e)=>{
 })
         newCard.addEventListener('click', (e)=>{
             e.preventDefault();
+            p1.textContent =`do you want more card?`
             let randomCard3 = Math.floor(Math.random()*10+1);
             cardArr.push(randomCard3)
             sumEl += randomCard3
@@ -75,9 +83,15 @@ buttonGo.addEventListener('click', (e)=>{
                 
             }
             let lastCard =cardArr[cardArr.length-1]
-            if(cardArr.length ===3){
+
+            if(cardArr.length ===1){
+                cards.textContent = `cards: ${cardArr[0]}`
+            }else if(cardArr.length ===2){
+                cards.textContent = `cards: ${cardArr[0]}  ,  ${cardArr[1]}`
+            }else if(cardArr.length ===3){
                 cards.textContent = `cards: ${cardArr[0]}   ,   ${cardArr[1]}  , ${cardArr[2]}`
-            }else if(cardArr.length ===4){
+            }
+            else if(cardArr.length ===4){
                 cards.textContent = `cards: ${cardArr[0]}   ,   ${cardArr[1]}  , ${cardArr[2]} ,${cardArr[3]}`
             }else if(cardArr.length ===5){
                 cards.textContent = `cards: ${cardArr[0]}   ,   ${cardArr[1]}  , ${cardArr[2]} ,${cardArr[3]}, ${cardArr[4]}`
@@ -85,39 +99,22 @@ buttonGo.addEventListener('click', (e)=>{
             
             
         })
-            
-        
-        // newCard.addEventListener('click', (e)=>{
-        //     e.preventDefault();
-        //     let randomCard3 = Math.floor(Math.random()*10+1);
-        //     cardArr.push(randomCard3)
-        //     for(let card of cardArr){
-        //         cards.textContent = `cards: ${cardArr[0]}   ,   ${cardArr[1]}  , ${cardArr[2]}`
-        //     }
-            
-        // })
+       
+
     })
 })
 
-// const vaildName = ()=>{
-//     let inputVal = inputName.value
-//     if(inputVal ===''){
-//         alert("must enter name")
-//         inputName.focus();
-//         return false
-//     }else{
-//         div.textContent = `Welcome! ${vaildName()}, please verify you are over than 18 or not`
-//         let over18 = createBtn();
-//         let under18 = createBtn();
-//         over18.textContent = "YES"
-//         under18.textContent = "NO"
-//         over18.addEventListener('click', ()=>{
-//         div.textContent ='HAHAHAHA'
-//         })
-        
-//     }
+
+
+ const handleUnder18 =(event)=>{
+            event.preventDefault();
+            alert('Sorry, you are not allowed to play')
+
+        }
+const vaildName = ()=>{
     
-// }
+}
+
 
 const createBtn =()=>{
     let btn = document.createElement('button')
