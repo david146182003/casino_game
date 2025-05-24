@@ -40,6 +40,11 @@ buttonGo.addEventListener('click', (e)=>{
         let sum = document.createElement('div')
         let startGame = document.createElement('button')
         let newCard = document.createElement('button')
+        //iterate ove the collection
+        let divCollection = window.document.getElementsByTagName('div')
+        for(let div of divCollection){
+            div.style.fontSize = "30px"
+        }
         div.appendChild(p1)
         div.appendChild(cards)
         div.appendChild(sum)
