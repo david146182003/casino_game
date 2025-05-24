@@ -19,8 +19,8 @@ buttonGo.addEventListener('click', (e)=>{
         alert("Must enter name without number and space")
         inputName.focus();
         return false
-    }else if(inputVal.length<3){
-        alert("Your name must include more than 3 characters")
+    }else if(inputVal.length<3 || inputVal.length>20){
+        alert("Your name must include more than 3 characters and less than 20")
         inputName.focus();
         return false
     }
